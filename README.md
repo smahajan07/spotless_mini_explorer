@@ -1,4 +1,5 @@
 # Frontier Exploration Robot
+[![Build Status](https://travis-ci.org/smahajan07/spotless_mini_explorer.svg?branch=master)](https://travis-ci.org/smahajan07/spotless_mini_explorer)
 
 # Overview
 This is a ROS package for a custom built frontier exploration robot being built for Acme Robotics.
