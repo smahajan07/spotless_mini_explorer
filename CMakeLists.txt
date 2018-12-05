@@ -25,5 +25,5 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(frontier_explorer src/main.cpp src/pathPlanner.cpp)
+add_executable(frontier_explorer src/main.cpp src/pathPlanner.cpp src/frontierOps.cpp)
 target_link_libraries(frontier_explorer ${catkin_LIBRARIES})
