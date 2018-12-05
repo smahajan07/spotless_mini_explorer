@@ -33,13 +33,19 @@ void pathPlanner::mapCallback(const nav_msgs::OccupancyGrid& map) {
   ROS_INFO_STREAM("Map received");
   float resolution = map.info.resolution;
   ROS_INFO_STREAM("Map resolution : " << resolution);
-  this->processFrontiers();
+  // frontierOps::processFrontiers();
 }
 
-int pathPlanner::processFrontiers() {
-  ROS_INFO_STREAM("Processing Frontiers");
+void pathPlanner::moveBot(const sensor_msgs::PointCloud frontierCloud) {
+  
+}
 
-  return 0;
+float pathPlanner::getDistance(float x1, float x2, float y1, float y2) {
+
+}
+
+int pathPlanner::getMedian(std::vector<int> frontier) {
+
 }
 
 pathPlanner::~pathPlanner() {
