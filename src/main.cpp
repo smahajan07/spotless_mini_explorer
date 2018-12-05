@@ -10,8 +10,6 @@ int main(int argc, char **argv) {
   explorerObj.fullScan();
   // update map 
   explorerObj.updateMap();
-  // process frontiers
-  explorerObj.processFrontiers();
   // ros spin or add spinOnce in loop to control end of node
   ros::spin();
 
