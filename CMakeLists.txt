@@ -8,6 +8,11 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   geometry_msgs
+  tf
+  nav_msgs
+  actionlib
+  move_base
+  move_base_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -25,5 +30,13 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(frontier_explorer src/main.cpp src/pathPlanner.cpp)
+add_executable(frontier_explorer src/main.cpp src/pathPlanner.cpp src/frontierOps.cpp)
 target_link_libraries(frontier_explorer ${catkin_LIBRARIES})
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(frontier_test test/allTests.launch test/testFrontierOps.cpp test/main.cpp
+    src/pathPlanner.cpp src/frontierOps.cpp)
+  target_link_libraries(frontier_test ${catkin_LIBRARIES})
+  add_dependencies(frontier_test ${catkin_EXPORTED_TARGETS})
+endif()

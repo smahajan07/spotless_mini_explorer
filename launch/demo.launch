@@ -5,4 +5,5 @@
   </include>
   <include file="$(find turtlebot_gazebo)/launch/gmapping_demo.launch"/>
   <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch"/>
+  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
 </launch>

@@ -1,5 +1,6 @@
 # Frontier Exploration Robot
 [![Build Status](https://travis-ci.org/smahajan07/spotless_mini_explorer.svg?branch=master)](https://travis-ci.org/smahajan07/spotless_mini_explorer)
+[![Coverage Status](https://coveralls.io/repos/github/smahajan07/spotless_mini_explorer/badge.svg?branch=master)](https://coveralls.io/github/smahajan07/spotless_mini_explorer?branch=master)
 
 # Overview
 This is a ROS package for a custom built frontier exploration robot being built for Acme Robotics.

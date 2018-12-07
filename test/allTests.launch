@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <test pkg="spotless_mini_explorer" test-name="frontier_test" type="frontier_test"/>
+</launch>
