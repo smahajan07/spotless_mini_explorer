@@ -23,6 +23,10 @@ class pathPlanner : public frontierOps {
   ros::Subscriber mapSub;
   // create a publisher to publish velocities
   ros::Publisher velPub;
+  // point cloud for frontiers
+  sensor_msgs::PointCloud frontierPtCloud;
+  // publisher for frontier point clouds
+  ros::Publisher publisherPtCloud;
  public:
   // constructor
   pathPlanner();
@@ -34,8 +38,6 @@ class pathPlanner : public frontierOps {
   void updateMap();
   // move turtlebot
   void moveBot(const sensor_msgs::PointCloud);
-  // get distance from a point
-  float getDistance(float, float, float, float);
   // get median
   int getMedian(std::vector<int>);
   // destructor
