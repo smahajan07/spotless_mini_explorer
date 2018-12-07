@@ -9,8 +9,12 @@
 
 class frontierOps {
  private:
-  sensor_msgs::PointCloud frontierPtCloud;
-  ros::Publisher publisherPtCloud;
+  // setting values as private members instead of #define
+  int OCC_THRESHOLD = 10;
+  int MAP_OPEN_LIST = 1;
+  int MAP_CLOSE_LIST = 2;
+  int FRONTIER_OPEN_LIST = 3;
+  int FRONTIER_CLOSE_LIST = 4;
  public:
   // constructor
   frontierOps();
@@ -21,14 +25,12 @@ class frontierOps {
   bool isFrontier(const nav_msgs::OccupancyGrid&, int, int, int);
   // get adjacent points
   void getAdjacentPts(int*, int , int);
-  // get row
-  int getRow(int, int);
-  // get column
-  int getCol(int, int);
   // get nearest frontier
   int getNearestFrontier(const sensor_msgs::PointCloud);
   // get farthest frontier
   int getFarthestFrontier(const sensor_msgs::PointCloud);
+  // get distance from a point
+  float getDistance(float, float, float, float);
   // destructor
   ~frontierOps();
 };
