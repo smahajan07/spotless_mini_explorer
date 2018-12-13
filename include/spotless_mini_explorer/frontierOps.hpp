@@ -32,8 +32,8 @@
  * can now use that information to set a goal for the bot and move it there.
  */
 
-#ifndef INCLUDE_FRONTIEROPS_HPP_
-#define INCLUDE_FRONTIEROPS_HPP_
+#ifndef INCLUDE_SPOTLESS_MINI_EXPLORER_FRONTIEROPS_HPP_
+#define INCLUDE_SPOTLESS_MINI_EXPLORER_FRONTIEROPS_HPP_
 
 #include <iostream>
 #include <vector>
@@ -61,6 +61,7 @@ class frontierOps {
   int FRONTIER_OPEN_LIST = 3;
   // frontier close list index
   int FRONTIER_CLOSE_LIST = 4;
+
  public:
   /**
   *@brief Constructor for class. Left empty for future development
@@ -156,4 +157,4 @@ class frontierOps {
   ~frontierOps();
 };
 
-#endif  // INCLUDE_FRONTIEROPS_HPP_
+#endif  // INCLUDE_SPOTLESS_MINI_EXPLORER_FRONTIEROPS_HPP_

@@ -33,8 +33,8 @@
  * to move the bot to the desired location.
  */
 
-#ifndef INCLUDE_PATHPLANNER_HPP_
-#define INCLUDE_PATHPLANNER_HPP_
+#ifndef INCLUDE_SPOTLESS_MINI_EXPLORER_PATHPLANNER_HPP_
+#define INCLUDE_SPOTLESS_MINI_EXPLORER_PATHPLANNER_HPP_
 
 #include <iostream>
 #include <vector>
@@ -61,6 +61,7 @@ class pathPlanner : public frontierOps {
   sensor_msgs::PointCloud frontierPtCloud;
   // publisher for frontier point clouds
   ros::Publisher publisherPtCloud;
+
  public:
   /**
   *@brief Constructor for the pathPlanner class. It defines the publishers of
@@ -129,4 +130,4 @@ class pathPlanner : public frontierOps {
   ~pathPlanner();
 };
 
-#endif  // INCLUDE_PATHPLANNER_HPP_
+#endif  // INCLUDE_SPOTLESS_MINI_EXPLORER_PATHPLANNER_HPP_

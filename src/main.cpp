@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
   pathPlanner explorerObj;
   // do a full scan
   explorerObj.fullScan();
-  // update map 
+  // update map
   explorerObj.updateMap();
   // ros spin or add spinOnce in loop to control end of node
   ros::spin();

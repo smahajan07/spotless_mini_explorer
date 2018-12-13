@@ -58,32 +58,32 @@ std::vector<std::vector<int> > frontierOps::processFrontiers(
   int adj_vector[8];
   int v_neighbours[8];
   // Breadth First Search (BFS)
-  while(!q_m.empty()) {
+  while (!q_m.empty()) {
     int cur_pos = q_m.front();
     q_m.pop();
-    if(cell_states[cur_pos] == MAP_CLOSE_LIST)
+    if (cell_states[cur_pos] == MAP_CLOSE_LIST)
       continue;
-    if(isFrontier(map, cur_pos, mapSize, mapWidth)) {
+    if (isFrontier(map, cur_pos, mapSize, mapWidth)) {
       std::queue<int> q_f;
       std::vector<int> new_frontier;
       q_f.push(cur_pos);
       cell_states[cur_pos] = FRONTIER_OPEN_LIST;
       // Second BFS
-      while(!q_f.empty()) {
+      while (!q_f.empty()) {
         int n_cell = q_f.front();
         q_f.pop();
-        if(cell_states[n_cell] == MAP_CLOSE_LIST ||
+        if (cell_states[n_cell] == MAP_CLOSE_LIST ||
           cell_states[n_cell] == FRONTIER_CLOSE_LIST)
           continue;
-        if(isFrontier(map, n_cell, mapSize, mapWidth)) {
+        if (isFrontier(map, n_cell, mapSize, mapWidth)) {
           new_frontier.push_back(n_cell);
           getAdjacentPts(adj_vector, n_cell, mapWidth);
-          for(int i = 0; i < 8; i++) {
-            if(adj_vector[i] < mapSize && adj_vector[i] >= 0) {
-              if(cell_states[adj_vector[i]] != FRONTIER_OPEN_LIST &&
+          for (int i = 0; i < 8; i++) {
+            if (adj_vector[i] < mapSize && adj_vector[i] >= 0) {
+              if (cell_states[adj_vector[i]] != FRONTIER_OPEN_LIST &&
                 cell_states[adj_vector[i]] != FRONTIER_CLOSE_LIST &&
                 cell_states[adj_vector[i]] != MAP_CLOSE_LIST) {
-                if(map.data[adj_vector[i]] != 100) {
+                if (map.data[adj_vector[i]] != 100) {
                   q_f.push(adj_vector[i]);
                   cell_states[adj_vector[i]] = FRONTIER_OPEN_LIST;
                 }
@@ -93,31 +93,31 @@ std::vector<std::vector<int> > frontierOps::processFrontiers(
         }
         cell_states[n_cell] = FRONTIER_CLOSE_LIST;
       }
-      if(new_frontier.size() > 5)
+      if (new_frontier.size() > 5)
         frontiers.push_back(new_frontier);
 
-      for(unsigned int i = 0; i < new_frontier.size(); i++) {
+      for (unsigned int i = 0; i < new_frontier.size(); i++) {
         cell_states[new_frontier[i]] = MAP_CLOSE_LIST;
       }
     }
     getAdjacentPts(adj_vector, cur_pos, mapWidth);
 
     for (int i = 0; i < 8; ++i) {
-      if(adj_vector[i] < mapSize && adj_vector[i] >= 0) {
-        if(cell_states[adj_vector[i]] != MAP_OPEN_LIST &&
+      if (adj_vector[i] < mapSize && adj_vector[i] >= 0) {
+        if (cell_states[adj_vector[i]] != MAP_OPEN_LIST &&
           cell_states[adj_vector[i]] != MAP_CLOSE_LIST) {
           getAdjacentPts(v_neighbours, adj_vector[i], mapWidth);
           bool map_open_neighbor = false;
-          for(int j = 0; j < 8; j++) {
-            if(v_neighbours[j] < mapSize && v_neighbours[j] >= 0) {
-              if(map.data[v_neighbours[j]] < OCC_THRESHOLD &&
+          for (int j = 0; j < 8; j++) {
+            if (v_neighbours[j] < mapSize && v_neighbours[j] >= 0) {
+              if (map.data[v_neighbours[j]] < OCC_THRESHOLD &&
                 map.data[v_neighbours[j]] >= 0) {
                 map_open_neighbor = true;
                 break;
               }
             }
           }
-          if(map_open_neighbor) {
+          if (map_open_neighbor) {
             q_m.push(adj_vector[i]);
             cell_states[adj_vector[i]] = MAP_OPEN_LIST;
           }
@@ -146,23 +146,23 @@ bool frontierOps::isFrontier(const nav_msgs::OccupancyGrid& map,
   // check if the received point is a frontier or not
   const int MIN_FOUND = 1;
   // The point under consideration must be known
-  if(map.data[point] != -1) {
+  if (map.data[point] != -1) {
     return false;
   }
   int locations[8];
   getAdjacentPts(locations, point, mapWidth);
   int found = 0;
-  for(int i = 0; i < 8; i++) {
-    if(locations[i] < mapSize && locations[i] >= 0) {
+  for (int i = 0; i < 8; i++) {
+    if (locations[i] < mapSize && locations[i] >= 0) {
       // None of the neighbours should be occupied space.
-      if(map.data[locations[i]] > OCC_THRESHOLD) {
+      if (map.data[locations[i]] > OCC_THRESHOLD) {
         return false;
       }
       // At least one of the neighbours is open and known space,
       // hence frontier point
-      if(map.data[locations[i]] == 0) {
+      if (map.data[locations[i]] == 0) {
         found++;
-        if(found == MIN_FOUND)
+        if (found == MIN_FOUND)
           return true;
       }
     }

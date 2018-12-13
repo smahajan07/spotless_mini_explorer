@@ -70,11 +70,11 @@ void pathPlanner::fullScan() {
     velPub.publish(msg);
     ros::spinOnce();
     loop_rate.sleep();
-    count ++;
+    count++;
   }
   // stop rotation
   msg.linear.x = 0;
-  msg.angular.z = 0.0; 
+  msg.angular.z = 0.0;
   velPub.publish(msg);
 }
 
@@ -87,14 +87,14 @@ void pathPlanner::mapCallback(const nav_msgs::OccupancyGrid& map) {
   // send the map for processing frontiers
   std::vector<std::vector<int> > frontiers = frontierOps::processFrontiers(
       map, map.info.height, map.info.width, x + (y * map.info.width));
-  std::vector<std::vector<int> > map_2d(map.info.height,
-    std::vector<int>(map.info.width, 0));
+  // std::vector<std::vector<int> > map_2d(map.info.height,
+  //   std::vector<int>(map.info.width, 0));
 
-  for (int i = 0; i < map.info.height; i++) {
-    for (int j = 0; j < map.info.width; j++) {
-      map_2d[i][j] = (int) map.data[j + i * map.info.width];
-    }
-  }
+  // for (int i = 0; i < map.info.height; i++) {
+  //   for (int j = 0; j < map.info.width; j++) {
+  //     map_2d[i][j] = (int) map.data[j + i * map.info.width];
+  //   }
+  // }
 
   // get the centre points of the frontiers
   ROS_INFO_STREAM("frontiers size"<< frontiers.size());
@@ -118,21 +118,21 @@ void pathPlanner::mapCallback(const nav_msgs::OccupancyGrid& map) {
     for (int j = 0; j < frontiers[i].size(); j++) {
       num_points++;
     }
-  } 
+  }
 
   ROS_INFO_STREAM("Num of frontier points "<< num_points);
-  for (int i = 0; i < frontiers.size(); i++) {
-    for (int j = 0; j < frontiers[i].size(); j++) {
-    auto y= (frontiers[i][j]%map.info.width);
-    auto x= (frontiers[i][j]/map.info.width);
-    map_2d[x][y]  = 5;
-    }
-  } 
-  for (int i = 0; i < frontierMedians.size(); i++) {
-    auto y= (frontierMedians[i]%map.info.width);
-    auto x= (frontierMedians[i]/map.info.width);
-    map_2d[x][y]  = 10;
-  }
+  // for (int i = 0; i < frontiers.size(); i++) {
+  //   for (int j = 0; j < frontiers[i].size(); j++) {
+  //   auto y= (frontiers[i][j]%map.info.width);
+  //   auto x= (frontiers[i][j]/map.info.width);
+  //   map_2d[x][y]  = 5;
+  //   }
+  // }
+  // for (int i = 0; i < frontierMedians.size(); i++) {
+  //   auto y= (frontierMedians[i]%map.info.width);
+  //   auto x= (frontierMedians[i]/map.info.width);
+  //   map_2d[x][y]  = 10;
+  // }
 
   // publish the frontiers
   publisherPtCloud.publish(frontierPtCloud);
@@ -145,8 +145,8 @@ void pathPlanner::moveBot(const sensor_msgs::PointCloud frontierCloud) {
   // if there are not frontiers, return
   if (frontierCloud.points.size() == 0)
     return;
-  
-  bool at_target = false;
+
+  // bool at_target = false;
   int frontier_i = frontierOps::getNearestFrontier(frontierCloud);
   ROS_INFO("Closest frontier: %d", frontier_i);
   // move to the closest frontier
@@ -173,7 +173,7 @@ void pathPlanner::moveBot(const sensor_msgs::PointCloud frontierCloud) {
 
   if (
     ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED || count < 2) {
-    at_target = true;
+    // at_target = true;
     ROS_INFO("The base moved to %f,%f", goal.target_pose.pose.position.x,
              goal.target_pose.pose.position.y);
     geometry_msgs::Quaternion odom_quat =
@@ -183,7 +183,8 @@ void pathPlanner::moveBot(const sensor_msgs::PointCloud frontierCloud) {
     ac.waitForResult();
   count++;
   } else {
-  frontier_i = (rand() % frontierCloud.points.size());
+  // frontier_i = (rand() % frontierCloud.points.size());
+  frontier_i = frontierOps::getFarthestFrontier(frontierCloud);
   ROS_WARN_STREAM("Frontier navigation failed, rerouting to farthest frontier");
   goal.target_pose.pose.position.x = frontierCloud.points[frontier_i].x;
   goal.target_pose.pose.position.y = frontierCloud.points[frontier_i].y;
@@ -201,8 +202,8 @@ void pathPlanner::moveBot(const sensor_msgs::PointCloud frontierCloud) {
   ac.waitForResult(ros::Duration(20.0));
   ROS_INFO("move_base goal published");
   if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
-    ROS_INFO_STREAM("ATTEMPT #: " << count );
-    at_target = true;
+    ROS_INFO_STREAM("ATTEMPT #: " << count);
+    // at_target = true;
     ROS_INFO("The base moved to %f,%f", goal.target_pose.pose.position.x,
              goal.target_pose.pose.position.y);
     geometry_msgs::Quaternion odom_quat =
