@@ -62,7 +62,7 @@ TEST(TestRosActivity, testMapCB) {
   // wait till gazebo starts
   ros::Duration(3).sleep();
   // test
-  while(nh.ok()) {
+  while (nh.ok()) {
     EXPECT_NO_FATAL_FAILURE(testObj.fullScan());
     EXPECT_NO_FATAL_FAILURE(testObj.updateMap());
     ros::spinOnce();
