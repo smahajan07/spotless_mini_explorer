@@ -35,7 +35,8 @@ target_link_libraries(frontier_explorer ${catkin_LIBRARIES})
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
-  add_rostest_gtest(frontier_test test/allTests.launch test/testFrontierOps.cpp test/main.cpp
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+  add_rostest_gtest(frontier_test test/allTests.launch test/testFrontierOps.cpp test/testPathPlanner.cpp test/main.cpp
     src/pathPlanner.cpp src/frontierOps.cpp)
   target_link_libraries(frontier_test ${catkin_LIBRARIES})
   add_dependencies(frontier_test ${catkin_EXPORTED_TARGETS})

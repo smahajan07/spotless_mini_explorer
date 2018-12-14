@@ -1,4 +1,14 @@
 <?xml version="1.0"?>
 <launch>
+  <!-- launch gazebo -->
+  <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+  <arg name="world_file" value="$(find spotless_mini_explorer)/world/rrlab.sdf"/>
+  <arg name="gui" value="0"/>
+  </include>
+  <include file="$(find turtlebot_gazebo)/launch/gmapping_demo.launch"/>
+  <!-- launch frontier node -->
+  <node name="frontier_explorer" pkg="spotless_mini_explorer" type="frontier_explorer"
+    output="screen"/>
+  <!-- launch test node -->
   <test pkg="spotless_mini_explorer" test-name="frontier_test" type="frontier_test"/>
 </launch>
