@@ -1,0 +1,217 @@
+\hypertarget{classfrontierOps}{}\section{frontier\+Ops Class Reference}
+\label{classfrontierOps}\index{frontier\+Ops@{frontier\+Ops}}
+
+
+The \hyperlink{classfrontierOps}{frontier\+Ops} class. It forms the base class and \hyperlink{classpathPlanner}{path\+Planner} class inherits from it. It mainly has methods to process Frontiers in a map.  
+
+
+
+
+{\ttfamily \#include $<$frontier\+Ops.\+hpp$>$}
+
+
+
+Inheritance diagram for frontier\+Ops\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classfrontierOps__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfrontierOps_a8c0a23673e5f301bd3ced6bed48e9a68}{frontier\+Ops} ()
+\begin{DoxyCompactList}\small\item\em Constructor for class. Left empty for future development. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \hyperlink{classfrontierOps_afccdd525011a5e5612e508b1cc3f970c}{process\+Frontiers} (const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map, int map\+Height, int map\+Width, int pose)
+\begin{DoxyCompactList}\small\item\em Takes in the map and finds out the potential frontiers by doing a breadth first search. It uses a queue to maintain the frontiers. Makes calls to other methods of the class as a part of computing the frontiers. \end{DoxyCompactList}\item 
+bool \hyperlink{classfrontierOps_a7b683fae50c4177ff4a03a8d7f81135e}{is\+Frontier} (const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map, int point, int map\+Size, int map\+Width)
+\begin{DoxyCompactList}\small\item\em Checks if a given point on a given map is a frontier or not. Checks the occupancy grid values of the point ad its neighbours and determines whether or not it is a frontier. \end{DoxyCompactList}\item 
+void \hyperlink{classfrontierOps_a50425855de4624cdd70b521e27a77306}{get\+Adjacent\+Pts} (int $\ast$loc, int position, int map\+Width)
+\begin{DoxyCompactList}\small\item\em Receives a pointer to an empty array and a point. It fills the array with eight adjacent neighbours of the point on a given map. \end{DoxyCompactList}\item 
+int \hyperlink{classfrontierOps_a1d13d033b937ae062daeeec85f7cde89}{get\+Nearest\+Frontier} (const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)
+\begin{DoxyCompactList}\small\item\em Get the nearest frontier (euclidean distance) \end{DoxyCompactList}\item 
+int \hyperlink{classfrontierOps_a565ae2e8f1b0b957014c740e3358b794}{get\+Farthest\+Frontier} (const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)
+\begin{DoxyCompactList}\small\item\em At times when the bot fails to move to a nearby frontier we can move it all the way to the farthest frontier to cover more area. \end{DoxyCompactList}\item 
+float \hyperlink{classfrontierOps_a00b0353fd53b19d709e14a951a85637e}{get\+Distance} (float x1, float x2, float y1, float y2)
+\begin{DoxyCompactList}\small\item\em Get euclidean distance between two points. \end{DoxyCompactList}\item 
+\hyperlink{classfrontierOps_ade1dc1a2a60cb389520936567ab78e0d}{$\sim$frontier\+Ops} ()\hypertarget{classfrontierOps_ade1dc1a2a60cb389520936567ab78e0d}{}\label{classfrontierOps_ade1dc1a2a60cb389520936567ab78e0d}
+
+\begin{DoxyCompactList}\small\item\em Destructor for class \hyperlink{classfrontierOps}{frontier\+Ops}. Left empty for future development. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classfrontierOps}{frontier\+Ops} class. It forms the base class and \hyperlink{classpathPlanner}{path\+Planner} class inherits from it. It mainly has methods to process Frontiers in a map. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{frontier\+Ops@{frontier\+Ops}!frontier\+Ops@{frontier\+Ops}}
+\index{frontier\+Ops@{frontier\+Ops}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{frontier\+Ops()}{frontierOps()}}]{\setlength{\rightskip}{0pt plus 5cm}frontier\+Ops\+::frontier\+Ops (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a8c0a23673e5f301bd3ced6bed48e9a68}{}\label{classfrontierOps_a8c0a23673e5f301bd3ced6bed48e9a68}
+
+
+Constructor for class. Left empty for future development. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{frontier\+Ops@{frontier\+Ops}!get\+Adjacent\+Pts@{get\+Adjacent\+Pts}}
+\index{get\+Adjacent\+Pts@{get\+Adjacent\+Pts}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{get\+Adjacent\+Pts(int $\ast$loc, int position, int map\+Width)}{getAdjacentPts(int *loc, int position, int mapWidth)}}]{\setlength{\rightskip}{0pt plus 5cm}void frontier\+Ops\+::get\+Adjacent\+Pts (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{loc, }
+\item[{int}]{position, }
+\item[{int}]{map\+Width}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a50425855de4624cdd70b521e27a77306}{}\label{classfrontierOps_a50425855de4624cdd70b521e27a77306}
+
+
+Receives a pointer to an empty array and a point. It fills the array with eight adjacent neighbours of the point on a given map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc} & It\textquotesingle{}s the pointer to the starting position of an empty array \\
+\hline
+{\em position} & The point on the map for which we will find the adjacent neighbours \\
+\hline
+{\em map\+Width} & Width of the map\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\index{frontier\+Ops@{frontier\+Ops}!get\+Distance@{get\+Distance}}
+\index{get\+Distance@{get\+Distance}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{get\+Distance(float x1, float x2, float y1, float y2)}{getDistance(float x1, float x2, float y1, float y2)}}]{\setlength{\rightskip}{0pt plus 5cm}float frontier\+Ops\+::get\+Distance (
+\begin{DoxyParamCaption}
+\item[{float}]{x1, }
+\item[{float}]{x2, }
+\item[{float}]{y1, }
+\item[{float}]{y2}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a00b0353fd53b19d709e14a951a85637e}{}\label{classfrontierOps_a00b0353fd53b19d709e14a951a85637e}
+
+
+Get euclidean distance between two points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & x coordinate of point 1 \\
+\hline
+{\em x2} & x coordinate of point 2 \\
+\hline
+{\em y1} & y coordinate of point 1 \\
+\hline
+{\em y2} & y coordinate of point 2\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Euclidean distance between the points in float 
+\end{DoxyReturn}
+\index{frontier\+Ops@{frontier\+Ops}!get\+Farthest\+Frontier@{get\+Farthest\+Frontier}}
+\index{get\+Farthest\+Frontier@{get\+Farthest\+Frontier}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{get\+Farthest\+Frontier(const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)}{getFarthestFrontier(const sensor_msgs::PointCloud frontierCloud)}}]{\setlength{\rightskip}{0pt plus 5cm}int frontier\+Ops\+::get\+Farthest\+Frontier (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Point\+Cloud}]{frontier\+Cloud}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a565ae2e8f1b0b957014c740e3358b794}{}\label{classfrontierOps_a565ae2e8f1b0b957014c740e3358b794}
+
+
+At times when the bot fails to move to a nearby frontier we can move it all the way to the farthest frontier to cover more area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frontier\+Cloud} & The point cloud created using frontier medians (center points)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The frontier (number) of the farthest frontier from the point cloud 
+\end{DoxyReturn}
+\index{frontier\+Ops@{frontier\+Ops}!get\+Nearest\+Frontier@{get\+Nearest\+Frontier}}
+\index{get\+Nearest\+Frontier@{get\+Nearest\+Frontier}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{get\+Nearest\+Frontier(const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)}{getNearestFrontier(const sensor_msgs::PointCloud frontierCloud)}}]{\setlength{\rightskip}{0pt plus 5cm}int frontier\+Ops\+::get\+Nearest\+Frontier (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Point\+Cloud}]{frontier\+Cloud}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a1d13d033b937ae062daeeec85f7cde89}{}\label{classfrontierOps_a1d13d033b937ae062daeeec85f7cde89}
+
+
+Get the nearest frontier (euclidean distance) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frontier\+Cloud} & The point cloud created using frontier medians (centre points)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The frontier (number) of the nearest frontier from the point cloud 
+\end{DoxyReturn}
+\index{frontier\+Ops@{frontier\+Ops}!is\+Frontier@{is\+Frontier}}
+\index{is\+Frontier@{is\+Frontier}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{is\+Frontier(const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map, int point, int map\+Size, int map\+Width)}{isFrontier(const nav_msgs::OccupancyGrid &map, int point, int mapSize, int mapWidth)}}]{\setlength{\rightskip}{0pt plus 5cm}bool frontier\+Ops\+::is\+Frontier (
+\begin{DoxyParamCaption}
+\item[{const nav\+\_\+msgs\+::\+Occupancy\+Grid \&}]{map, }
+\item[{int}]{point, }
+\item[{int}]{map\+Size, }
+\item[{int}]{map\+Width}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_a7b683fae50c4177ff4a03a8d7f81135e}{}\label{classfrontierOps_a7b683fae50c4177ff4a03a8d7f81135e}
+
+
+Checks if a given point on a given map is a frontier or not. Checks the occupancy grid values of the point ad its neighbours and determines whether or not it is a frontier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Occupancy grid of the surrounding. Unknown points correspond to -\/1, obstacles have a value greater than 0 and empty space will have the value 0. It is processed like a one dimensional array. \\
+\hline
+{\em point} & The point in the array that needs to be checked as a frontier \\
+\hline
+{\em map\+Size} & Map size is map height $\ast$ map width \\
+\hline
+{\em map\+Width} & Width of the map\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the given point is a frontier, False if not 
+\end{DoxyReturn}
+\index{frontier\+Ops@{frontier\+Ops}!process\+Frontiers@{process\+Frontiers}}
+\index{process\+Frontiers@{process\+Frontiers}!frontier\+Ops@{frontier\+Ops}}
+\subsubsection[{\texorpdfstring{process\+Frontiers(const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map, int map\+Height, int map\+Width, int pose)}{processFrontiers(const nav_msgs::OccupancyGrid &map, int mapHeight, int mapWidth, int pose)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::vector$<$ int $>$ $>$ frontier\+Ops\+::process\+Frontiers (
+\begin{DoxyParamCaption}
+\item[{const nav\+\_\+msgs\+::\+Occupancy\+Grid \&}]{map, }
+\item[{int}]{map\+Height, }
+\item[{int}]{map\+Width, }
+\item[{int}]{pose}
+\end{DoxyParamCaption}
+)}\hypertarget{classfrontierOps_afccdd525011a5e5612e508b1cc3f970c}{}\label{classfrontierOps_afccdd525011a5e5612e508b1cc3f970c}
+
+
+Takes in the map and finds out the potential frontiers by doing a breadth first search. It uses a queue to maintain the frontiers. Makes calls to other methods of the class as a part of computing the frontiers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Occupancy grid of the surrounding. Unknown points correspond to -\/1, obstacles have a value greater than 0 and empty space will have the value 0. It is processed like a one dimensional array. \\
+\hline
+{\em map\+Height} & Visually map is a two dimensional object but it is passed as a one dimensional array. So map\+Height is the height (or length) of the map. \\
+\hline
+{\em map\+Width} & Width of the map \\
+\hline
+{\em pose} & Pose of the robot\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Frontiers of type\+: a two dimensional integer vector 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/spotless\+\_\+mini\+\_\+explorer/\hyperlink{frontierOps_8hpp}{frontier\+Ops.\+hpp}\item 
+src/\hyperlink{frontierOps_8cpp}{frontier\+Ops.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,61 @@
+\hypertarget{testFrontierOps_8cpp}{}\section{test/test\+Frontier\+Ops.cpp File Reference}
+\label{testFrontierOps_8cpp}\index{test/test\+Frontier\+Ops.\+cpp@{test/test\+Frontier\+Ops.\+cpp}}
+
+
+Frontier Ops is the base class and has important functions related to processing the frontiers. In this file we wish to test the functions of this class which can be isolated. Futher developments will be made.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include \char`\"{}nav\+\_\+msgs/\+Occupancy\+Grid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/\+Point\+Cloud.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tf/transform\+\_\+broadcaster.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tf/transform\+\_\+listener.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/spotless\+\_\+mini\+\_\+explorer/frontier\+Ops.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/spotless\+\_\+mini\+\_\+explorer/path\+Planner.\+hpp\char`\"{}}\\*
+Include dependency graph for test\+Frontier\+Ops.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testFrontierOps_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{testFrontierOps_8cpp_a21163b06514292cecaecbe2532913b4d}{T\+E\+ST} (test\+Frontier, check\+Frontier\+Occupied\+More\+Than\+Thresh)\hypertarget{testFrontierOps_8cpp_a21163b06514292cecaecbe2532913b4d}{}\label{testFrontierOps_8cpp_a21163b06514292cecaecbe2532913b4d}
+
+\begin{DoxyCompactList}\small\item\em Test for is\+Frontier() Checks if the given point is a frontier or not. Even if one frontier is present the test should be able to detect it and return appropriate state. \end{DoxyCompactList}\item 
+\hyperlink{testFrontierOps_8cpp_a447d33cc7599a6d9dacf93ad9fce386d}{T\+E\+ST} (test\+Frontier, check\+Frontier\+No\+Data)\hypertarget{testFrontierOps_8cpp_a447d33cc7599a6d9dacf93ad9fce386d}{}\label{testFrontierOps_8cpp_a447d33cc7599a6d9dacf93ad9fce386d}
+
+\begin{DoxyCompactList}\small\item\em Test for is\+Frontier() Checks if the given point is a frontier or not. Even no frontier is present the test should be able to detect it and return appropriate state. \end{DoxyCompactList}\item 
+\hyperlink{testFrontierOps_8cpp_a6351645ca7214988cefa5ef24c5ce7aa}{T\+E\+ST} (test\+Process\+Frontier, get\+Frontiers)\hypertarget{testFrontierOps_8cpp_a6351645ca7214988cefa5ef24c5ce7aa}{}\label{testFrontierOps_8cpp_a6351645ca7214988cefa5ef24c5ce7aa}
+
+\begin{DoxyCompactList}\small\item\em Test for process\+Frontiers() Test for processing frontiers. Checks for number of frontiers present in a map. \end{DoxyCompactList}\item 
+\hyperlink{testFrontierOps_8cpp_a7410b9caa558583e4fdcc27243b09433}{T\+E\+ST} (test\+Distance, check\+Euclidean\+Distance)\hypertarget{testFrontierOps_8cpp_a7410b9caa558583e4fdcc27243b09433}{}\label{testFrontierOps_8cpp_a7410b9caa558583e4fdcc27243b09433}
+
+\begin{DoxyCompactList}\small\item\em Test for get\+Distance() Checks the euclidean distance between two points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Frontier Ops is the base class and has important functions related to processing the frontiers. In this file we wish to test the functions of this class which can be isolated. Futher developments will be made. 
+
+M\+IT License
+
+Copyright (c) 2018 Sarthak Mahajan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\+HE S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED \char`\"{}\+A\+S I\+S\char`\"{}, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+TY OF A\+NY K\+I\+ND, E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED, I\+N\+C\+L\+U\+D\+I\+NG B\+UT N\+OT L\+I\+M\+I\+T\+ED TO T\+HE W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+O\+RS OR C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY C\+L\+A\+IM, D\+A\+M\+A\+G\+ES OR O\+T\+H\+ER L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN AN A\+C\+T\+I\+ON OF C\+O\+N\+T\+R\+A\+CT, T\+O\+RT OR O\+T\+H\+E\+R\+W\+I\+SE, A\+R\+I\+S\+I\+NG F\+R\+OM, O\+UT OF OR IN C\+O\+N\+N\+E\+C\+T\+I\+ON W\+I\+TH T\+HE S\+O\+F\+T\+W\+A\+RE OR T\+HE U\+SE OR O\+T\+H\+ER D\+E\+A\+L\+I\+N\+GS IN T\+HE S\+O\+F\+T\+W\+A\+RE. \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2018 Sarthak Mahajan
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Sarthak Mahajan 
+\end{DoxyAuthor}

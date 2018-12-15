@@ -1,0 +1,157 @@
+\hypertarget{classpathPlanner}{}\section{path\+Planner Class Reference}
+\label{classpathPlanner}\index{path\+Planner@{path\+Planner}}
+
+
+Path planner class.  
+
+
+
+
+{\ttfamily \#include $<$path\+Planner.\+hpp$>$}
+
+
+
+Inheritance diagram for path\+Planner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classpathPlanner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for path\+Planner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classpathPlanner__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpathPlanner_aff1bbc2236712fb764100cebe851c3ed}{path\+Planner} ()\hypertarget{classpathPlanner_aff1bbc2236712fb764100cebe851c3ed}{}\label{classpathPlanner_aff1bbc2236712fb764100cebe851c3ed}
+
+\begin{DoxyCompactList}\small\item\em Constructor for the \hyperlink{classpathPlanner}{path\+Planner} class. It defines the publishers of the class. \end{DoxyCompactList}\item 
+void \hyperlink{classpathPlanner_a13cd0ca87b3c6f8b4ade900df966e737}{map\+Callback} (const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map)
+\begin{DoxyCompactList}\small\item\em This is the call back function of the map subscriber. \end{DoxyCompactList}\item 
+void \hyperlink{classpathPlanner_acbe410097020c8f6073a9a19ef8fc68e}{full\+Scan} ()
+\begin{DoxyCompactList}\small\item\em Method to make the bot rotate 360 degrees and get a sweep scan of the surrounding. This is called in the beginning to get the initial understanding of the environment. \end{DoxyCompactList}\item 
+void \hyperlink{classpathPlanner_a2455be4e0454389304f9835b5e8ccfae}{update\+Map} ()
+\begin{DoxyCompactList}\small\item\em Sets the map subscriber to the correct topic. \end{DoxyCompactList}\item 
+void \hyperlink{classpathPlanner_a442f9f0d8c9e38ac3e1962a005d2e18a}{move\+Bot} (const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)
+\begin{DoxyCompactList}\small\item\em This is where the magic happens. At the end of every iteration of scanning and processing, the system generates a point cloud of frontiers. This method sets the goal as the nearest frontier for the bot using the move base package. In case the execution was not successful, which should be rare, it tries to go to the farthest frontier. \end{DoxyCompactList}\item 
+int \hyperlink{classpathPlanner_a2600d05e907410f3c0cf6718425c5cee}{get\+Median} (std\+::vector$<$ int $>$ frontier)
+\begin{DoxyCompactList}\small\item\em Receives the array of frontier points and it sends back the centre point of the frontier. \end{DoxyCompactList}\item 
+\hyperlink{classpathPlanner_adca2c6ed8e4505daf4f49f64f3319261}{$\sim$path\+Planner} ()\hypertarget{classpathPlanner_adca2c6ed8e4505daf4f49f64f3319261}{}\label{classpathPlanner_adca2c6ed8e4505daf4f49f64f3319261}
+
+\begin{DoxyCompactList}\small\item\em Destructor for class \hyperlink{classpathPlanner}{path\+Planner}. Left empty for future development. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Path planner class. 
+
+\subsection{Member Function Documentation}
+\index{path\+Planner@{path\+Planner}!full\+Scan@{full\+Scan}}
+\index{full\+Scan@{full\+Scan}!path\+Planner@{path\+Planner}}
+\subsubsection[{\texorpdfstring{full\+Scan()}{fullScan()}}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Planner\+::full\+Scan (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpathPlanner_acbe410097020c8f6073a9a19ef8fc68e}{}\label{classpathPlanner_acbe410097020c8f6073a9a19ef8fc68e}
+
+
+Method to make the bot rotate 360 degrees and get a sweep scan of the surrounding. This is called in the beginning to get the initial understanding of the environment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\index{path\+Planner@{path\+Planner}!get\+Median@{get\+Median}}
+\index{get\+Median@{get\+Median}!path\+Planner@{path\+Planner}}
+\subsubsection[{\texorpdfstring{get\+Median(std\+::vector$<$ int $>$ frontier)}{getMedian(std::vector< int > frontier)}}]{\setlength{\rightskip}{0pt plus 5cm}int path\+Planner\+::get\+Median (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$}]{frontier}
+\end{DoxyParamCaption}
+)}\hypertarget{classpathPlanner_a2600d05e907410f3c0cf6718425c5cee}{}\label{classpathPlanner_a2600d05e907410f3c0cf6718425c5cee}
+
+
+Receives the array of frontier points and it sends back the centre point of the frontier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frontier} & Integer array of frontier points\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The center point from the frontier points 
+\end{DoxyReturn}
+\index{path\+Planner@{path\+Planner}!map\+Callback@{map\+Callback}}
+\index{map\+Callback@{map\+Callback}!path\+Planner@{path\+Planner}}
+\subsubsection[{\texorpdfstring{map\+Callback(const nav\+\_\+msgs\+::\+Occupancy\+Grid \&map)}{mapCallback(const nav_msgs::OccupancyGrid &map)}}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Planner\+::map\+Callback (
+\begin{DoxyParamCaption}
+\item[{const nav\+\_\+msgs\+::\+Occupancy\+Grid \&}]{map}
+\end{DoxyParamCaption}
+)}\hypertarget{classpathPlanner_a13cd0ca87b3c6f8b4ade900df966e737}{}\label{classpathPlanner_a13cd0ca87b3c6f8b4ade900df966e737}
+
+
+This is the call back function of the map subscriber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Occupancy grid of the surrounding. Unknown points correspond to -\/1, obstacles have a value greater than 0 and empty space will have the value 0. It is processed like a one dimensional array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\index{path\+Planner@{path\+Planner}!move\+Bot@{move\+Bot}}
+\index{move\+Bot@{move\+Bot}!path\+Planner@{path\+Planner}}
+\subsubsection[{\texorpdfstring{move\+Bot(const sensor\+\_\+msgs\+::\+Point\+Cloud frontier\+Cloud)}{moveBot(const sensor_msgs::PointCloud frontierCloud)}}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Planner\+::move\+Bot (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Point\+Cloud}]{frontier\+Cloud}
+\end{DoxyParamCaption}
+)}\hypertarget{classpathPlanner_a442f9f0d8c9e38ac3e1962a005d2e18a}{}\label{classpathPlanner_a442f9f0d8c9e38ac3e1962a005d2e18a}
+
+
+This is where the magic happens. At the end of every iteration of scanning and processing, the system generates a point cloud of frontiers. This method sets the goal as the nearest frontier for the bot using the move base package. In case the execution was not successful, which should be rare, it tries to go to the farthest frontier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frontier\+Cloud} & It\textquotesingle{}s the point cloud generated with the frontier median (centre) points\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\index{path\+Planner@{path\+Planner}!update\+Map@{update\+Map}}
+\index{update\+Map@{update\+Map}!path\+Planner@{path\+Planner}}
+\subsubsection[{\texorpdfstring{update\+Map()}{updateMap()}}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Planner\+::update\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpathPlanner_a2455be4e0454389304f9835b5e8ccfae}{}\label{classpathPlanner_a2455be4e0454389304f9835b5e8ccfae}
+
+
+Sets the map subscriber to the correct topic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/spotless\+\_\+mini\+\_\+explorer/\hyperlink{pathPlanner_8hpp}{path\+Planner.\+hpp}\item 
+src/\hyperlink{pathPlanner_8cpp}{path\+Planner.\+cpp}\end{DoxyCompactItemize}
