@@ -33,9 +33,12 @@ The following dependencies need to be met before installing this package:
 * [Turtlebot](http://wiki.ros.org/turtlebot) and [Turtlebot_Gazebo](http://wiki.ros.org/turtlebot_gazebo)
 * [Move Base](http://wiki.ros.org/move_base) (Ideally this is a part of standard ROS installation, please download if not already installed)
 
-## Video demonstration
+## Presentation and Video demonstration
 The user can also refer to the following presentation slides and the video for more details about the project and video demo to see how to build, run tests or run the demo.
-(Section to be updated)
+
+[![Presentation](https://img.shields.io/badge/Presentation-v0.1-brightgreen.svg)](https://docs.google.com/presentation/d/1Ei56q79E8JUMGSWKWq4-YBZp_kIpXm-DbYsL_7wLOZI/edit?usp=sharing)
+
+(Section to be updated for links to the videos)
 
 ## Instructions to Build
 * If you already have a catkin workspace then:
@@ -92,7 +95,35 @@ Note: This will save a map in your CURRENT working directory, so it's best to ca
 Moreover, the demo will potentially run for a long time, basically till it maps the unknown space, so in order to kill the demo please press CTRL+C in the active terminals.
 
 ## Rosbags
-(Section to be updated)
+* Inspect
+
+Along with the package a sample ROS bag was provided ```results/explorerRecording.bag```. 
+If you wish to look at the topics in the rosbag and find out more details about it:
+```
+cd <your catkin workspace>
+source devel/setup.bash
+cd src/spotless_mini_explorer/results
+rosbag info explorerRecording.bag
+```
+* Play
+
+You can play the above mentioned rosbag by running the following in two different terminals:
+```
+roscore
+```
+ and
+```
+rosbag  play explorerRecording.bag
+```
+* Record
+
+If you wish to record the data in a rosbag you can run the rosbags command separately in a new terminal OR you can make use of the option provided in the launch file. You just need to set the record argument to true by running:
+```
+cd <your catkin workspace>
+source devel/setup.bash
+roslaunch spotless_mini_explorer demo.launch record:=true
+```
+This will save a rosbag in your results directory of the package, by the name ```explorerRecording.bag```.
 
 ## Track progress
 The development followed a Solo Iterative Process and the progress can be tracked via the following links:
@@ -100,12 +131,14 @@ The development followed a Solo Iterative Process and the progress can be tracke
 * [Planning Log](https://docs.google.com/document/d/1M3QvbsZYWknKas6uhFjU1NELlZafBw9uz3sJWOEfes0/edit)
 
 ## Code coverage
-The current code coverage is 92%.
+![Code coverage](https://img.shields.io/badge/coverage-92%25-green.svg)
+
+(NOTE: THIS IS SELF GENERATED TAG, not to be confused with the automatic generated tag from coveralls)
 
 Since there is currently some issue with coveralls picking up the build from travis and checking for code coverage, provided below is a screenshot of the coverage report generated using lcov, locally:
 ![code_coverage](results/lcov_coverage.png)
 
-Instructions to run code coverage:
+Instructions to run code coverage yourself:
 ```
 cd <your catkin workspace>
 cd build/
@@ -115,10 +148,30 @@ lcov --list coverage.info
 ```
 
 ## Known issues/bugs
-(Section to be updated)
+* Gazebo might take some time to load, especially if a VM is being used. So, if gazebo fails while running the demo, please try launching again
+* The turtlebot may sometimes get stuck in between obstacles, trying to clear it's path or even in a situation where the surrounding is homogeneous or no frontiers are left in the _locally surrounding_ open space, both these situations is where human intervention might be required and the user can either teleoperate and move the bot to a new location (and kill teleoperation) or simply start the nodes again, however it should be noted that the information generated uptill this point will be lost.
 
 ## Doxygen
-(Section to be updated)
+Using Doxygen, documents have already been generated and you can view them by, going to your package directory and running:
+```
+cd docs
+cd html
+firefox index.html
+```
+However, if you wish to generate it yourself, you will need to install doxygen (if not already installed, follow the given steps), and then you can follow the steps below for generating the docs:
+
+* To install doxygen run the following command: 
+```
+sudo apt-get install doxygen
+```
+
+* Now from your package directory, run the following command:
+
+```
+doxygen spotlessDocs
+```
+
+Doxygen files will be generated in /docs folder
 
 ## About the developer
 My name is Sarthak Mahajan and I'm currently pusruing my Masters of Engineering in Robotics and University of Maryland, College Park. My areas of interest are computer vision, machine learning and deep learning. I have worked on multiple projects in these areas and keep trying to do more hands on projects. As a budding roboticist, I love to work towards solving real world problems. Working on ROS (and other open source projects) has made me appreciate the value of an open source community and I would like to contribute back to such communities.
@@ -128,4 +181,3 @@ This package has been created as a part of the course ENPM 808X Software Develop
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[MIT License](https://github.com/smahajan07/spotless_mini_explorer/blob/master/LICENSE)
