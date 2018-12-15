@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="record" default="false"/>
   <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
   <arg name="world_file" value="$(find spotless_mini_explorer)/world/rrlab.sdf"/>
   </include>
   <include file="$(find turtlebot_gazebo)/launch/gmapping_demo.launch"/>
   <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch"/>
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+  <node name="record" pkg="rosbag" type="record" args="--duration=15.0 -a -x /camera/(.*)
+    -O $(find spotless_mini_explorer)/results/explorerRecording.bag" if="$(arg record)"/>
 </launch>

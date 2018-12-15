@@ -1,0 +1,17 @@
+\hypertarget{dir_68267d1309a1af8e8297ef4c3efbcdba}{}\section{src Directory Reference}
+\label{dir_68267d1309a1af8e8297ef4c3efbcdba}\index{src Directory Reference@{src Directory Reference}}
+Directory dependency graph for src\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=134pt]{dir_68267d1309a1af8e8297ef4c3efbcdba_dep}
+\end{center}
+\end{figure}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \hyperlink{frontierOps_8cpp}{frontier\+Ops.\+cpp}
+\begin{DoxyCompactList}\small\item\em Here all the class variables and methods are defined. \hyperlink{classfrontierOps}{frontier\+Ops} is the base class for the system and provides helper functions to process the map obtained of the surrounding. Broadly speaking it receives the map and sends back the point cloud of medians of the frontiers so that the base class can now use that information to set a goal for the bot and move it there. \end{DoxyCompactList}\item 
+file \hyperlink{pathPlanner_8cpp}{path\+Planner.\+cpp}
+\begin{DoxyCompactList}\small\item\em Here all the class variables and methods are defined. \hyperlink{classpathPlanner}{path\+Planner} is the derived class (inherits from the \hyperlink{classfrontierOps}{frontier\+Ops} class). Primarily, this class is at the front end of the system. It subscribes to the map of the surrounding and sends it to methods of the \hyperlink{classfrontierOps}{frontier\+Ops} class to process it and send the computed goal. Now it takes control again and calls the method to move the bot to the desired location. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="include/spotless_mini_explorer/frontierOps.hpp" name="include/spotless_mini_explorer/frontierOps.hpp">
+<area shape="rect" id="node2" href="$frontierOps_8cpp.html" title="Here all the class variables and methods are defined. frontierOps is the base class for the system an..." alt="" coords="5,102,139,129"/>
+<area shape="rect" id="node3" href="$pathPlanner_8cpp.html" title="Here all the class variables and methods are defined. pathPlanner is the derived class (inherits from..." alt="" coords="53,184,192,211"/>
+<area shape="rect" id="node4" href="$pathPlanner_8hpp.html" title="Here all the class variables and methods are declared. pathPlanner is the derived class (inherits fro..." alt="" coords="213,95,387,136"/>
+<area shape="rect" id="node5" href="$testFrontierOps_8cpp.html" title="Frontier Ops is the base class and has important functions related to processing the frontiers..." alt="" coords="408,184,571,211"/>
+<area shape="rect" id="node6" href="$testPathPlanner_8cpp.html" title="Path Planner class is the derived class and primarily takes care of the call back function..." alt="" coords="217,184,383,211"/>
+</map>

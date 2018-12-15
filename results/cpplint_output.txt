@@ -1,0 +1,8 @@
+Done processing ./include/spotless_mini_explorer/pathPlanner.hpp
+Done processing ./include/spotless_mini_explorer/frontierOps.hpp
+Done processing ./src/main.cpp
+Done processing ./src/pathPlanner.cpp
+Done processing ./src/frontierOps.cpp
+Done processing ./test/testPathPlanner.cpp
+Done processing ./test/main.cpp
+Done processing ./test/testFrontierOps.cpp
