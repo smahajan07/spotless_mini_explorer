@@ -1,5 +1,5 @@
 # Frontier Exploration Robot
-[![Build Status](https://travis-ci.org/smahajan07/spotless_mini_explorer.svg?branch=master)](https://travis-ci.org/smahajan07/spotless_mini_explorer)
+[![Build Status](https://travis-ci.com/smahajan07/spotless_mini_explorer.svg?token=JmJzv9NxrpFcdhLWReKp&branch=master)](https://travis-ci.com/smahajan07/spotless_mini_explorer)
 [![Coverage Status](https://coveralls.io/repos/github/smahajan07/spotless_mini_explorer/badge.svg?branch=master)](https://coveralls.io/github/smahajan07/spotless_mini_explorer?branch=master)
 ![Version](https://img.shields.io/badge/version-0.1-orange.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -38,7 +38,13 @@ The user can also refer to the following presentation slides and the video for m
 
 [![Presentation](https://img.shields.io/badge/Presentation-v0.1-brightgreen.svg)](https://docs.google.com/presentation/d/1Ei56q79E8JUMGSWKWq4-YBZp_kIpXm-DbYsL_7wLOZI/edit?usp=sharing)
 
-(Section to be updated for links to the videos)
+Part 1 - Introduction and Overview [![video1](https://img.shields.io/badge/video-1-blue.svg)](https://youtu.be/QeWW-rN9QWs)
+
+Part 2 - Build, run tests and run demo [![video2](https://img.shields.io/badge/video-2-blue.svg)](https://youtu.be/_23vLnvyQ6w)
+
+Part 3 - Final Output, Gitg and future work [![video3](https://img.shields.io/badge/video-3-blue.svg)](https://youtu.be/UuaJW4zg3QM)
+
+BONUS video - complete demo video! Note: It's 20 min long and recomended to watch at 2x! [![bonus_video](https://img.shields.io/badge/bonus%20video-demo-blue.svg)](https://youtu.be/rbME59c9Ask)
 
 ## Instructions to Build
 * If you already have a catkin workspace then:
@@ -133,7 +139,7 @@ The development followed a Solo Iterative Process and the progress can be tracke
 ## Code coverage
 ![Code coverage](https://img.shields.io/badge/coverage-92%25-green.svg)
 
-(NOTE: THIS IS SELF GENERATED TAG, not to be confused with the automatic generated tag from coveralls)
+(NOTE: THIS IS A SELF GENERATED TAG, not to be confused with the automatic generated tag from coveralls)
 
 Since there is currently some issue with coveralls picking up the build from travis and checking for code coverage, provided below is a screenshot of the coverage report generated using lcov, locally:
 ![code_coverage](results/lcov_coverage.png)
